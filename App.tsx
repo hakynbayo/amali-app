@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
+// import SetPin from './app/Screens/SetPin';
+// import Login from './app/Screens/Login';
+// import ResetPin from './app/Screens/ResetPin';
+import GetStarted from './app/Screens/GetStarted';
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, width: "100%", }}>
+      {/* <SetPin /> */}
+      {/* <Login/> */}
+      {/* <ResetPin/> */}
+      <GetStarted />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
