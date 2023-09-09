@@ -35,7 +35,7 @@ const ResetPin: React.FC = () => {
         {Array.from({ length: 6 }, (_, index) => (
           <View key={index} style={styles.pinDigit}>
             <Text style={styles.pinDigitText}>
-              {pin[index] ? "*" : ""}
+              {pin[index] || ""}
             </Text>
           </View>
         ))}
@@ -63,7 +63,7 @@ const ResetPin: React.FC = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: "fit",
+    resizeMode: "contain",
     justifyContent: "flex-end",
   },
 
@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   amali:{
-   position:"relative",
-   bottom:95,
-   left:120,
-  },
+    position:"relative",
+    bottom:145,
+    left:120,
+   },
   logoText:{
     fontSize:30,
     fontWeight:"700",
@@ -97,17 +97,22 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-    borderColor: "#FFFF",
+    borderColor: "#FFF",
     borderWidth: 1,
     borderRadius: 4,
     paddingHorizontal: 20,
-    width: 0, 
+    paddingVertical:20,
+    marginVertical:20,
+    width: "100%", 
     height: 0, 
   },
 
   pinContainer: {
     flexDirection: "row",
     alignItems: "center",
+    position: "absolute",
+    bottom:160,
+    right:30,
   },
   pinDigit: {
     width: 45,
@@ -119,7 +124,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   pinDigitText: {
-    fontSize: 20,
+    fontSize: 24,
+    fontWeight:"500",
+    textAlign: "center",
+    lineHeight: 31,
+    color:"#2E45B8",
+    marginBottom: 10,
   },
   subtitle: {
     textAlign: "left",
