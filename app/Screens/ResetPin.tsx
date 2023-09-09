@@ -7,6 +7,8 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+import { AntDesign} from "@expo/vector-icons"
+
 
 
 
@@ -27,6 +29,9 @@ const ResetPin: React.FC = () => {
       source={require("../assets/bgimg.jpg")}
       style={styles.backgroundImage}
     >
+       <TouchableOpacity style={styles.arrow}>
+        <AntDesign name="arrowleft" size={20} color={"#011533"} />
+      </TouchableOpacity>
 
       <Text style={styles.title}>Reset PIN</Text>
       <Text style={styles.subtitle}>We’ll send a verification code to this Number</Text>
@@ -34,6 +39,9 @@ const ResetPin: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="+234"
+            placeholderTextColor="#000"
+            secureTextEntry
+            keyboardType="numeric"
             onChangeText={setPin}
           />
     
@@ -55,21 +63,20 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "fit",
     justifyContent: "flex-end",
-    marginBottom: 30,
   },
 
   inputContainer: {
     backgroundColor: "#FFFFFF",
     padding: 30,
-    borderRadius: 30,
+    borderRadius: 50,
   },
   title: {
     textAlign: "left",
     fontSize: 30,
-    lineHeight:31.25,
+    lineHeight: 31.25,
     fontWeight: "500",
     color: "#090E25",
-    padding:10,
+    padding: 10,
     marginLeft: 30,
   },
   lastTitle: {
@@ -112,6 +119,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "500",
     textAlign: "center",
+  },
+  arrow: {
+    position: "absolute",
+    left: 30,
+    top: 70,
   },
 });
 

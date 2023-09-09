@@ -7,17 +7,11 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import {Feather} from "@expo/vector-icons"
-
-
+import { Feather, AntDesign } from "@expo/vector-icons";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [pin, setPin] = useState<string>("");
-
-
-
-  
 
   const handleLogin = () => {
     // Add your login logic here, e.g., API calls or authentication checks
@@ -30,26 +24,37 @@ const Login: React.FC = () => {
       source={require("../assets/bgimg.jpg")}
       style={styles.backgroundImage}
     >
+      <TouchableOpacity style={styles.arrow}>
+        <AntDesign name="arrowleft" size={20} color={"#011533"} />
+      </TouchableOpacity>
       <Text style={styles.title}>Login</Text>
       <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="+234"
-            onChangeText={setUsername}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="pin"
-            secureTextEntry
-            onChangeText={setPin}
-          /> 
-          <Feather name="eye" style={styles.eye} size={30} color={"#00000029"}/>
+        <TextInput
+          style={styles.input}
+          placeholder="+234"
+          placeholderTextColor="#000"
+          onChangeText={setUsername}
+        />
 
-          <Text style={styles.fgtTitle}>Forgot PIN?</Text>
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder="PIN"
+          placeholderTextColor="#000"
+          secureTextEntry
+          keyboardType="numeric"
+          onChangeText={setPin}
+        />
+        <TouchableOpacity style={styles.eye}>
+          <Feather name="eye" size={25} color={"#00000029"} />
+        </TouchableOpacity>
+        <Text style={styles.fgtTitle}>Forgot PIN?</Text>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.rButton} onPress={handleLogin}>
           <Text style={styles.lastTitle}>Don’t have an account? Sign Up</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -58,30 +63,28 @@ const Login: React.FC = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: "fit",
+    resizeMode: "contain",
     justifyContent: "flex-end",
-    marginBottom: 30,
   },
 
   inputContainer: {
     backgroundColor: "#FFFFFF",
     padding: 30,
-    borderRadius: 30,
+    borderRadius: 50,
   },
   title: {
     textAlign: "left",
     fontSize: 30,
-    lineHeight:31.25,
+    lineHeight: 31.25,
     fontWeight: "500",
     color: "#090E25",
-    marginBottom: 20,
-    padding:10,
+    padding: 10,
     marginLeft: 30,
   },
   lastTitle: {
     textAlign: "center",
     fontSize: 13,
-    fontWeight:"400",
+    fontWeight: "400",
     marginBottom: 10,
   },
   input: {
@@ -92,7 +95,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 20,
     paddingHorizontal: 20,
+    fontSize: 16,
   },
+
   fgtTitle: {
     textAlign: "left",
     fontSize: 15,
@@ -116,6 +121,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 50,
     top: 140,
+  },
+  rButton: {
+    backgroundColor: "#ffffff",
+  },
+  arrow: {
+    position: "absolute",
+    left: 30,
+    top: 70,
   },
 });
 

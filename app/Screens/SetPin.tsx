@@ -7,7 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, AntDesign } from "@expo/vector-icons";
 
 const SetPin: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -24,6 +24,10 @@ const SetPin: React.FC = () => {
       source={require("../assets/bgimg.jpg")}
       style={styles.backgroundImage}
     >
+      <TouchableOpacity style={styles.arrow}>
+        <AntDesign name="arrowleft" size={20} color={"#011533"} />
+      </TouchableOpacity>
+
       <Text style={styles.title}>Set a new PIN</Text>
       <Text style={styles.subtitle}>
         Choose something thats not common but easy to {"\n"}
@@ -33,17 +37,31 @@ const SetPin: React.FC = () => {
         <TextInput
           style={styles.input}
           placeholder="PIN"
-          onChangeText={setUsername}
+          placeholderTextColor="#000"
+          secureTextEntry
+          keyboardType="numeric"
+          onChangeText={setPin}
         />
-        <Feather name="eye" style={styles.eye} size={30} color={"#00000029"} />
+
+        <TouchableOpacity style={styles.eye}>
+          <Feather name="eye" size={25} color={"#00000029"} />
+        </TouchableOpacity>
 
         <TextInput
           style={styles.input}
           placeholder="Confirm Pin"
+          placeholderTextColor="#000"
           secureTextEntry
+          keyboardType="numeric"
           onChangeText={setPin}
         />
-        <Feather name="eye" style={styles.cEye} size={30} color={"#00000029"} />
+        <TouchableOpacity style={styles.cEye}>
+          <Feather
+            name="eye"
+            size={25}
+            color={"#00000029"}
+          />
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Change PIN</Text>
@@ -58,13 +76,12 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "fit",
     justifyContent: "flex-end",
-    marginBottom: 30,
   },
 
   inputContainer: {
     backgroundColor: "#FFFFFF",
     padding: 30,
-    borderRadius: 30,
+    borderRadius: 50,
   },
   title: {
     textAlign: "left",
@@ -72,7 +89,6 @@ const styles = StyleSheet.create({
     lineHeight: 31.25,
     fontWeight: "500",
     color: "#090E25",
-    marginBottom: 20,
     padding: 10,
     marginLeft: 30,
   },
@@ -82,8 +98,7 @@ const styles = StyleSheet.create({
     lineHeight: 18.23,
     fontWeight: "400",
     color: "#090E25",
-    marginBottom: 20,
-    padding: 10,
+    paddingHorizontal: 10,
     marginLeft: 30,
   },
   lastTitle: {
@@ -111,7 +126,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 5,
-    marginVertical: 30,
+    // marginVertical: 30,
   },
   buttonText: {
     color: "white",
@@ -124,6 +139,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 50,
     top: 50,
+  },
+  arrow: {
+    position: "absolute",
+    left: 30,
+    top: 70,
   },
   cEye: {
     position: "absolute",
